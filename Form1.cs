@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        Decimal daPercent = 132, hraPercent = 30, daOnTraPercent = 132; 
         public Form1()
         {
             InitializeComponent();
@@ -121,14 +122,20 @@ namespace WindowsFormsApplication1
                     SqlCommand cmd = new SqlCommand(null, con);
                     cmd.CommandText = "select * from mstemployees where empid = @empid";
                     SqlParameter param = new SqlParameter("@empid", SqlDbType.BigInt);
-                    param.Value = Convert.ToInt16(empid.Text);
+                    param.Value = Convert.ToInt64(empid.Text);
                     cmd.Parameters.Add(param);
                     con.Open();
                     cmd.Prepare();
+
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(ds);
                     DataTable dt = ds.Tables[0];
+                    if(dt.Rows.Count<1)
+                    {
+                        return;
+                    }
                     DataRow dr = dt.Rows[0];
+
                     name.Text = dr["name"].ToString();
                     designation.Text = dr["designation"].ToString();
                     department.Text = dr["department"].ToString();
@@ -138,9 +145,140 @@ namespace WindowsFormsApplication1
                     ppfno.Text = dr["ppfno"].ToString();
                     ccsno.Text = dr["ccsno"].ToString();
                     payband.Text = dr["payband"].ToString();
+
                     con.Close();
+
+                    pnlPayAndAllowances.Enabled = true;
+                    pnlDeductions.Enabled = true;
+                    pnlNetPay.Enabled = true;
                 }
             }
         }
+
+        /*private void setSalaryValues(DataRow dr)
+        {
+            Double _pay=0, _agp=0, _da=0, _hra=0, _tra=0, _daOnTra=0, _fp=0, _sp=0, _wa=0, _others=0;
+            if(dr == null)
+                return;
+            if(dr["employeetype"].Equals("NR") || dr["employeetype"].Equals("R"))
+            {
+                _pay = 67000;
+                _agp = 10000;
+                _da = (1.32) * (_pay + _agp);
+                _hra = (0.3) * (_pay + _agp);
+                _tra = 3200;
+                _daOnTra = (1.32) * (_tra);
+            }
+            if(dr["employeetype"].Equals("R"))
+            {
+                _hra = 0;
+                _sp = 4000;
+            }
+            if(dr["employeetype"].Equals("NA"))
+            {
+                _pay = 37690;
+                _agp = 0;
+                _da = 0;
+                _hra = 0;
+                _tra = 0;
+                _daOnTra = 0;
+                _fp = 0;
+                _sp = 25000;
+            }
+            if(dr["empid"].Equals(454))
+            {
+                _sp = 15000;
+            }
+            pay.Text = _pay.ToString();
+            agp.Text = _agp.ToString();
+            DA.Text = _da.ToString();
+            HRA.Text = _hra.ToString();
+            TRA.Text = _tra.ToString();
+            DAonTRA.Text = _daOnTra.ToString();
+            SP.Text = _sp.ToString();
+            FP.Text = _fp.ToString();
+
+
+        }*/
+
+        private void btnFormulae_Click(object sender, EventArgs e)
+        {
+            if(btnFormulae.Text.Equals("CHANGE FORMULAE"))
+            {
+                btnFormulae.Text = "LOCK FORMULAE";
+                tbDaOnTraPercent.ReadOnly = false;
+                tbDaPercent.ReadOnly = false;
+                tbHraPercent.ReadOnly = false;
+            }
+            else if(btnFormulae.Text.Equals("LOCK FORMULAE"))
+            {
+                btnFormulae.Text = "CHANGE FORMULAE";
+                tbDaOnTraPercent.ReadOnly = true;
+                tbDaPercent.ReadOnly = true;
+                tbHraPercent.ReadOnly = true;
+
+                daPercent = Convert.ToDecimal(tbDaPercent.Text);
+                daOnTraPercent = Convert.ToDecimal(tbDaOnTraPercent);
+                hraPercent = Convert.ToDecimal(tbHraPercent);
+
+                lblDaOnTraPercent.Text = tbDaOnTraPercent.Text + " of TRA";
+                lblDaPercent.Text = tbDaPercent.Text + " of PAY and AGP";
+                lblHraPercent.Text = tbHraPercent.Text + " of PAY and AGP";
+            }
+            else
+            {
+                MessageBox.Show("Code has been hampered!");
+            }
+        }
+
+        private void empid_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // FOR EMPID TEXTBOX ONLY
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void pay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void agp_Leave(object sender, EventArgs e)
+        {
+            if(!pay.Text.Equals("") && !agp.Text.Equals(""))
+            {
+                DA.Text = ((daPercent / 100) * (Convert.ToDecimal(pay.Text) + Convert.ToDecimal(agp.Text))).ToString();
+                HRA.Text = ((hraPercent / 100) * (Convert.ToDecimal(pay.Text) + Convert.ToDecimal(agp.Text))).ToString();
+            }
+            else
+            {
+                DA.Text = "";
+                HRA.Text = "";
+            }
+        }
+
+        private void TRA_Leave(object sender, EventArgs e)
+        {
+            if(!TRA.Text.Equals(""))
+            {
+                DAonTRA.Text = HRA.Text = ((daOnTraPercent / 100) * (Convert.ToDecimal(TRA.Text))).ToString();
+            }
+            else
+            {
+                DAonTRA.Text = "";
+            }
+        }
+
     }
 }

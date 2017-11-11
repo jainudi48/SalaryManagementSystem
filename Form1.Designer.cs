@@ -132,17 +132,30 @@
             this.netpay = new System.Windows.Forms.TextBox();
             this.grosspay = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlNetPay = new System.Windows.Forms.Panel();
+            this.pnlDeductions = new System.Windows.Forms.Panel();
+            this.pnlEmpDetails = new System.Windows.Forms.Panel();
+            this.pnlPayAndAllowances = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.pnlFormulas = new System.Windows.Forms.Panel();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.tbDaPercent = new System.Windows.Forms.TextBox();
+            this.tbHraPercent = new System.Windows.Forms.TextBox();
+            this.tbDaOnTraPercent = new System.Windows.Forms.TextBox();
+            this.btnFormulae = new System.Windows.Forms.Button();
+            this.lblDaPercent = new System.Windows.Forms.Label();
+            this.lblHraPercent = new System.Windows.Forms.Label();
+            this.lblDaOnTraPercent = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlNetPay.SuspendLayout();
+            this.pnlDeductions.SuspendLayout();
+            this.pnlEmpDetails.SuspendLayout();
+            this.pnlPayAndAllowances.SuspendLayout();
+            this.pnlFormulas.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -193,7 +206,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(415, 12);
+            this.label6.Location = new System.Drawing.Point(336, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 13);
             this.label6.TabIndex = 9;
@@ -202,7 +215,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(415, 32);
+            this.label7.Location = new System.Drawing.Point(336, 32);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 13);
             this.label7.TabIndex = 8;
@@ -211,7 +224,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(415, 52);
+            this.label8.Location = new System.Drawing.Point(336, 52);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 7;
@@ -220,7 +233,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(415, 72);
+            this.label9.Location = new System.Drawing.Point(336, 72);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 13);
             this.label9.TabIndex = 6;
@@ -229,7 +242,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(415, 92);
+            this.label10.Location = new System.Drawing.Point(336, 92);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(61, 13);
             this.label10.TabIndex = 5;
@@ -631,6 +644,7 @@
             this.empid.Name = "empid";
             this.empid.Size = new System.Drawing.Size(100, 20);
             this.empid.TabIndex = 0;
+            this.empid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.empid_KeyPress);
             // 
             // name
             // 
@@ -670,7 +684,7 @@
             // 
             // payband
             // 
-            this.payband.Location = new System.Drawing.Point(530, 85);
+            this.payband.Location = new System.Drawing.Point(451, 85);
             this.payband.Name = "payband";
             this.payband.ReadOnly = true;
             this.payband.Size = new System.Drawing.Size(100, 20);
@@ -679,7 +693,7 @@
             // 
             // ccsno
             // 
-            this.ccsno.Location = new System.Drawing.Point(530, 65);
+            this.ccsno.Location = new System.Drawing.Point(451, 65);
             this.ccsno.Name = "ccsno";
             this.ccsno.ReadOnly = true;
             this.ccsno.Size = new System.Drawing.Size(100, 20);
@@ -688,7 +702,7 @@
             // 
             // ppfno
             // 
-            this.ppfno.Location = new System.Drawing.Point(530, 45);
+            this.ppfno.Location = new System.Drawing.Point(451, 45);
             this.ppfno.Name = "ppfno";
             this.ppfno.ReadOnly = true;
             this.ppfno.Size = new System.Drawing.Size(100, 20);
@@ -697,7 +711,7 @@
             // 
             // bankaccountno
             // 
-            this.bankaccountno.Location = new System.Drawing.Point(530, 25);
+            this.bankaccountno.Location = new System.Drawing.Point(451, 25);
             this.bankaccountno.Name = "bankaccountno";
             this.bankaccountno.ReadOnly = true;
             this.bankaccountno.Size = new System.Drawing.Size(100, 20);
@@ -706,7 +720,7 @@
             // 
             // bankname
             // 
-            this.bankname.Location = new System.Drawing.Point(530, 5);
+            this.bankname.Location = new System.Drawing.Point(451, 5);
             this.bankname.Name = "bankname";
             this.bankname.ReadOnly = true;
             this.bankname.Size = new System.Drawing.Size(100, 20);
@@ -719,6 +733,8 @@
             this.TRA.Name = "TRA";
             this.TRA.Size = new System.Drawing.Size(100, 20);
             this.TRA.TabIndex = 6;
+            this.TRA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
+            this.TRA.Leave += new System.EventHandler(this.TRA_Leave);
             // 
             // HRA
             // 
@@ -726,6 +742,7 @@
             this.HRA.Name = "HRA";
             this.HRA.Size = new System.Drawing.Size(100, 20);
             this.HRA.TabIndex = 5;
+            this.HRA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // DA
             // 
@@ -733,6 +750,7 @@
             this.DA.Name = "DA";
             this.DA.Size = new System.Drawing.Size(100, 20);
             this.DA.TabIndex = 4;
+            this.DA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // agp
             // 
@@ -740,6 +758,8 @@
             this.agp.Name = "agp";
             this.agp.Size = new System.Drawing.Size(100, 20);
             this.agp.TabIndex = 3;
+            this.agp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
+            this.agp.Leave += new System.EventHandler(this.agp_Leave);
             // 
             // pay
             // 
@@ -747,6 +767,8 @@
             this.pay.Name = "pay";
             this.pay.Size = new System.Drawing.Size(100, 20);
             this.pay.TabIndex = 2;
+            this.pay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
+            this.pay.Leave += new System.EventHandler(this.agp_Leave);
             // 
             // payandallowancesOthers
             // 
@@ -754,6 +776,7 @@
             this.payandallowancesOthers.Name = "payandallowancesOthers";
             this.payandallowancesOthers.Size = new System.Drawing.Size(100, 20);
             this.payandallowancesOthers.TabIndex = 11;
+            this.payandallowancesOthers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // WA
             // 
@@ -761,6 +784,7 @@
             this.WA.Name = "WA";
             this.WA.Size = new System.Drawing.Size(100, 20);
             this.WA.TabIndex = 10;
+            this.WA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // SP
             // 
@@ -768,6 +792,7 @@
             this.SP.Name = "SP";
             this.SP.Size = new System.Drawing.Size(100, 20);
             this.SP.TabIndex = 9;
+            this.SP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // FP
             // 
@@ -775,6 +800,7 @@
             this.FP.Name = "FP";
             this.FP.Size = new System.Drawing.Size(100, 20);
             this.FP.TabIndex = 8;
+            this.FP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // DAonTRA
             // 
@@ -782,6 +808,7 @@
             this.DAonTRA.Name = "DAonTRA";
             this.DAonTRA.Size = new System.Drawing.Size(100, 20);
             this.DAonTRA.TabIndex = 7;
+            this.DAonTRA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // CCS
             // 
@@ -789,6 +816,7 @@
             this.CCS.Name = "CCS";
             this.CCS.Size = new System.Drawing.Size(100, 20);
             this.CCS.TabIndex = 21;
+            this.CCS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // LIC
             // 
@@ -796,6 +824,7 @@
             this.LIC.Name = "LIC";
             this.LIC.Size = new System.Drawing.Size(100, 20);
             this.LIC.TabIndex = 20;
+            this.LIC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // PT
             // 
@@ -803,6 +832,7 @@
             this.PT.Name = "PT";
             this.PT.Size = new System.Drawing.Size(100, 20);
             this.PT.TabIndex = 19;
+            this.PT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // EBF
             // 
@@ -810,6 +840,7 @@
             this.EBF.Name = "EBF";
             this.EBF.Size = new System.Drawing.Size(100, 20);
             this.EBF.TabIndex = 18;
+            this.EBF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // It
             // 
@@ -817,6 +848,7 @@
             this.It.Name = "It";
             this.It.Size = new System.Drawing.Size(100, 20);
             this.It.TabIndex = 17;
+            this.It.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // GIS
             // 
@@ -824,6 +856,7 @@
             this.GIS.Name = "GIS";
             this.GIS.Size = new System.Drawing.Size(100, 20);
             this.GIS.TabIndex = 16;
+            this.GIS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // PFLOAN
             // 
@@ -831,6 +864,7 @@
             this.PFLOAN.Name = "PFLOAN";
             this.PFLOAN.Size = new System.Drawing.Size(100, 20);
             this.PFLOAN.TabIndex = 15;
+            this.PFLOAN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // NPSArrears
             // 
@@ -838,6 +872,7 @@
             this.NPSArrears.Name = "NPSArrears";
             this.NPSArrears.Size = new System.Drawing.Size(100, 20);
             this.NPSArrears.TabIndex = 14;
+            this.NPSArrears.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // NPS
             // 
@@ -845,6 +880,7 @@
             this.NPS.Name = "NPS";
             this.NPS.Size = new System.Drawing.Size(100, 20);
             this.NPS.TabIndex = 13;
+            this.NPS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // GPF_CPF
             // 
@@ -852,6 +888,7 @@
             this.GPF_CPF.Name = "GPF_CPF";
             this.GPF_CPF.Size = new System.Drawing.Size(100, 20);
             this.GPF_CPF.TabIndex = 12;
+            this.GPF_CPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // totaldeductions
             // 
@@ -861,6 +898,7 @@
             this.totaldeductions.Size = new System.Drawing.Size(375, 20);
             this.totaldeductions.TabIndex = 87;
             this.totaldeductions.TabStop = false;
+            this.totaldeductions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // OR1C62
             // 
@@ -868,6 +906,7 @@
             this.OR1C62.Name = "OR1C62";
             this.OR1C62.Size = new System.Drawing.Size(100, 20);
             this.OR1C62.TabIndex = 25;
+            this.OR1C62.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // MedicalAdv
             // 
@@ -875,6 +914,7 @@
             this.MedicalAdv.Name = "MedicalAdv";
             this.MedicalAdv.Size = new System.Drawing.Size(100, 20);
             this.MedicalAdv.TabIndex = 24;
+            this.MedicalAdv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // HDFC
             // 
@@ -882,6 +922,7 @@
             this.HDFC.Name = "HDFC";
             this.HDFC.Size = new System.Drawing.Size(100, 20);
             this.HDFC.TabIndex = 23;
+            this.HDFC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // HBA
             // 
@@ -889,6 +930,7 @@
             this.HBA.Name = "HBA";
             this.HBA.Size = new System.Drawing.Size(100, 20);
             this.HBA.TabIndex = 22;
+            this.HBA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // deductionsOthers
             // 
@@ -896,6 +938,7 @@
             this.deductionsOthers.Name = "deductionsOthers";
             this.deductionsOthers.Size = new System.Drawing.Size(100, 20);
             this.deductionsOthers.TabIndex = 38;
+            this.deductionsOthers.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // TeleCharges
             // 
@@ -903,6 +946,7 @@
             this.TeleCharges.Name = "TeleCharges";
             this.TeleCharges.Size = new System.Drawing.Size(100, 20);
             this.TeleCharges.TabIndex = 37;
+            this.TeleCharges.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // LTCAdv
             // 
@@ -910,6 +954,7 @@
             this.LTCAdv.Name = "LTCAdv";
             this.LTCAdv.Size = new System.Drawing.Size(100, 20);
             this.LTCAdv.TabIndex = 36;
+            this.LTCAdv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // TutionFee
             // 
@@ -917,6 +962,7 @@
             this.TutionFee.Name = "TutionFee";
             this.TutionFee.Size = new System.Drawing.Size(100, 20);
             this.TutionFee.TabIndex = 35;
+            this.TutionFee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // CompAdv
             // 
@@ -924,6 +970,7 @@
             this.CompAdv.Name = "CompAdv";
             this.CompAdv.Size = new System.Drawing.Size(100, 20);
             this.CompAdv.TabIndex = 34;
+            this.CompAdv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // MCA
             // 
@@ -931,6 +978,7 @@
             this.MCA.Name = "MCA";
             this.MCA.Size = new System.Drawing.Size(100, 20);
             this.MCA.TabIndex = 33;
+            this.MCA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // Buscharges
             // 
@@ -938,6 +986,7 @@
             this.Buscharges.Name = "Buscharges";
             this.Buscharges.Size = new System.Drawing.Size(100, 20);
             this.Buscharges.TabIndex = 32;
+            this.Buscharges.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // ElecCharges
             // 
@@ -945,6 +994,7 @@
             this.ElecCharges.Name = "ElecCharges";
             this.ElecCharges.Size = new System.Drawing.Size(100, 20);
             this.ElecCharges.TabIndex = 31;
+            this.ElecCharges.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // WaterCharges
             // 
@@ -952,6 +1002,7 @@
             this.WaterCharges.Name = "WaterCharges";
             this.WaterCharges.Size = new System.Drawing.Size(100, 20);
             this.WaterCharges.TabIndex = 30;
+            this.WaterCharges.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // HouseRent
             // 
@@ -959,6 +1010,7 @@
             this.HouseRent.Name = "HouseRent";
             this.HouseRent.Size = new System.Drawing.Size(100, 20);
             this.HouseRent.TabIndex = 29;
+            this.HouseRent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // FestivalAdv
             // 
@@ -966,6 +1018,7 @@
             this.FestivalAdv.Name = "FestivalAdv";
             this.FestivalAdv.Size = new System.Drawing.Size(100, 20);
             this.FestivalAdv.TabIndex = 28;
+            this.FestivalAdv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // EOLHPLC_68_78
             // 
@@ -973,6 +1026,7 @@
             this.EOLHPLC_68_78.Name = "EOLHPLC_68_78";
             this.EOLHPLC_68_78.Size = new System.Drawing.Size(100, 20);
             this.EOLHPLC_68_78.TabIndex = 27;
+            this.EOLHPLC_68_78.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // MiscRecpt
             // 
@@ -980,6 +1034,7 @@
             this.MiscRecpt.Name = "MiscRecpt";
             this.MiscRecpt.Size = new System.Drawing.Size(100, 20);
             this.MiscRecpt.TabIndex = 26;
+            this.MiscRecpt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // netpay
             // 
@@ -988,6 +1043,7 @@
             this.netpay.ReadOnly = true;
             this.netpay.Size = new System.Drawing.Size(100, 20);
             this.netpay.TabIndex = 102;
+            this.netpay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // grosspay
             // 
@@ -997,158 +1053,164 @@
             this.grosspay.Size = new System.Drawing.Size(100, 20);
             this.grosspay.TabIndex = 101;
             this.grosspay.TabStop = false;
+            this.grosspay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pnlFormulas);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.pnlNetPay);
+            this.panel1.Controls.Add(this.pnlDeductions);
+            this.panel1.Controls.Add(this.pnlEmpDetails);
+            this.panel1.Controls.Add(this.pnlPayAndAllowances);
             this.panel1.Controls.Add(this.label51);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1028, 553);
             this.panel1.TabIndex = 103;
             // 
-            // panel5
+            // pnlNetPay
             // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.label50);
-            this.panel5.Controls.Add(this.netpay);
-            this.panel5.Location = new System.Drawing.Point(77, 470);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(255, 37);
-            this.panel5.TabIndex = 104;
+            this.pnlNetPay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlNetPay.Controls.Add(this.label50);
+            this.pnlNetPay.Controls.Add(this.netpay);
+            this.pnlNetPay.Enabled = false;
+            this.pnlNetPay.Location = new System.Drawing.Point(77, 470);
+            this.pnlNetPay.Name = "pnlNetPay";
+            this.pnlNetPay.Size = new System.Drawing.Size(255, 37);
+            this.pnlNetPay.TabIndex = 104;
             // 
-            // panel4
+            // pnlDeductions
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label53);
-            this.panel4.Controls.Add(this.label45);
-            this.panel4.Controls.Add(this.EOLHPLC_68_78);
-            this.panel4.Controls.Add(this.label46);
-            this.panel4.Controls.Add(this.label47);
-            this.panel4.Controls.Add(this.deductionsOthers);
-            this.panel4.Controls.Add(this.label48);
-            this.panel4.Controls.Add(this.TeleCharges);
-            this.panel4.Controls.Add(this.label49);
-            this.panel4.Controls.Add(this.LTCAdv);
-            this.panel4.Controls.Add(this.label41);
-            this.panel4.Controls.Add(this.TutionFee);
-            this.panel4.Controls.Add(this.label42);
-            this.panel4.Controls.Add(this.CompAdv);
-            this.panel4.Controls.Add(this.label43);
-            this.panel4.Controls.Add(this.MCA);
-            this.panel4.Controls.Add(this.label44);
-            this.panel4.Controls.Add(this.Buscharges);
-            this.panel4.Controls.Add(this.label22);
-            this.panel4.Controls.Add(this.ElecCharges);
-            this.panel4.Controls.Add(this.label23);
-            this.panel4.Controls.Add(this.WaterCharges);
-            this.panel4.Controls.Add(this.label24);
-            this.panel4.Controls.Add(this.HouseRent);
-            this.panel4.Controls.Add(this.label25);
-            this.panel4.Controls.Add(this.FestivalAdv);
-            this.panel4.Controls.Add(this.label26);
-            this.panel4.Controls.Add(this.MiscRecpt);
-            this.panel4.Controls.Add(this.label27);
-            this.panel4.Controls.Add(this.totaldeductions);
-            this.panel4.Controls.Add(this.label28);
-            this.panel4.Controls.Add(this.OR1C62);
-            this.panel4.Controls.Add(this.label29);
-            this.panel4.Controls.Add(this.MedicalAdv);
-            this.panel4.Controls.Add(this.label30);
-            this.panel4.Controls.Add(this.HDFC);
-            this.panel4.Controls.Add(this.label31);
-            this.panel4.Controls.Add(this.HBA);
-            this.panel4.Controls.Add(this.GPF_CPF);
-            this.panel4.Controls.Add(this.CCS);
-            this.panel4.Controls.Add(this.label32);
-            this.panel4.Controls.Add(this.label40);
-            this.panel4.Controls.Add(this.NPS);
-            this.panel4.Controls.Add(this.LIC);
-            this.panel4.Controls.Add(this.label33);
-            this.panel4.Controls.Add(this.label39);
-            this.panel4.Controls.Add(this.NPSArrears);
-            this.panel4.Controls.Add(this.PT);
-            this.panel4.Controls.Add(this.label34);
-            this.panel4.Controls.Add(this.label38);
-            this.panel4.Controls.Add(this.PFLOAN);
-            this.panel4.Controls.Add(this.EBF);
-            this.panel4.Controls.Add(this.label35);
-            this.panel4.Controls.Add(this.label37);
-            this.panel4.Controls.Add(this.GIS);
-            this.panel4.Controls.Add(this.It);
-            this.panel4.Controls.Add(this.label36);
-            this.panel4.Location = new System.Drawing.Point(355, 158);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(579, 353);
-            this.panel4.TabIndex = 2;
+            this.pnlDeductions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDeductions.Controls.Add(this.label53);
+            this.pnlDeductions.Controls.Add(this.label45);
+            this.pnlDeductions.Controls.Add(this.EOLHPLC_68_78);
+            this.pnlDeductions.Controls.Add(this.label46);
+            this.pnlDeductions.Controls.Add(this.label47);
+            this.pnlDeductions.Controls.Add(this.deductionsOthers);
+            this.pnlDeductions.Controls.Add(this.label48);
+            this.pnlDeductions.Controls.Add(this.TeleCharges);
+            this.pnlDeductions.Controls.Add(this.label49);
+            this.pnlDeductions.Controls.Add(this.LTCAdv);
+            this.pnlDeductions.Controls.Add(this.label41);
+            this.pnlDeductions.Controls.Add(this.TutionFee);
+            this.pnlDeductions.Controls.Add(this.label42);
+            this.pnlDeductions.Controls.Add(this.CompAdv);
+            this.pnlDeductions.Controls.Add(this.label43);
+            this.pnlDeductions.Controls.Add(this.MCA);
+            this.pnlDeductions.Controls.Add(this.label44);
+            this.pnlDeductions.Controls.Add(this.Buscharges);
+            this.pnlDeductions.Controls.Add(this.label22);
+            this.pnlDeductions.Controls.Add(this.ElecCharges);
+            this.pnlDeductions.Controls.Add(this.label23);
+            this.pnlDeductions.Controls.Add(this.WaterCharges);
+            this.pnlDeductions.Controls.Add(this.label24);
+            this.pnlDeductions.Controls.Add(this.HouseRent);
+            this.pnlDeductions.Controls.Add(this.label25);
+            this.pnlDeductions.Controls.Add(this.FestivalAdv);
+            this.pnlDeductions.Controls.Add(this.label26);
+            this.pnlDeductions.Controls.Add(this.MiscRecpt);
+            this.pnlDeductions.Controls.Add(this.label27);
+            this.pnlDeductions.Controls.Add(this.totaldeductions);
+            this.pnlDeductions.Controls.Add(this.label28);
+            this.pnlDeductions.Controls.Add(this.OR1C62);
+            this.pnlDeductions.Controls.Add(this.label29);
+            this.pnlDeductions.Controls.Add(this.MedicalAdv);
+            this.pnlDeductions.Controls.Add(this.label30);
+            this.pnlDeductions.Controls.Add(this.HDFC);
+            this.pnlDeductions.Controls.Add(this.label31);
+            this.pnlDeductions.Controls.Add(this.HBA);
+            this.pnlDeductions.Controls.Add(this.GPF_CPF);
+            this.pnlDeductions.Controls.Add(this.CCS);
+            this.pnlDeductions.Controls.Add(this.label32);
+            this.pnlDeductions.Controls.Add(this.label40);
+            this.pnlDeductions.Controls.Add(this.NPS);
+            this.pnlDeductions.Controls.Add(this.LIC);
+            this.pnlDeductions.Controls.Add(this.label33);
+            this.pnlDeductions.Controls.Add(this.label39);
+            this.pnlDeductions.Controls.Add(this.NPSArrears);
+            this.pnlDeductions.Controls.Add(this.PT);
+            this.pnlDeductions.Controls.Add(this.label34);
+            this.pnlDeductions.Controls.Add(this.label38);
+            this.pnlDeductions.Controls.Add(this.PFLOAN);
+            this.pnlDeductions.Controls.Add(this.EBF);
+            this.pnlDeductions.Controls.Add(this.label35);
+            this.pnlDeductions.Controls.Add(this.label37);
+            this.pnlDeductions.Controls.Add(this.GIS);
+            this.pnlDeductions.Controls.Add(this.It);
+            this.pnlDeductions.Controls.Add(this.label36);
+            this.pnlDeductions.Enabled = false;
+            this.pnlDeductions.Location = new System.Drawing.Point(355, 158);
+            this.pnlDeductions.Name = "pnlDeductions";
+            this.pnlDeductions.Size = new System.Drawing.Size(579, 353);
+            this.pnlDeductions.TabIndex = 2;
             // 
-            // panel3
+            // pnlEmpDetails
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.pan);
-            this.panel3.Controls.Add(this.empid);
-            this.panel3.Controls.Add(this.name);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.designation);
-            this.panel3.Controls.Add(this.department);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.bankname);
-            this.panel3.Controls.Add(this.bankaccountno);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.ppfno);
-            this.panel3.Controls.Add(this.ccsno);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.payband);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Location = new System.Drawing.Point(77, 34);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(857, 118);
-            this.panel3.TabIndex = 0;
+            this.pnlEmpDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEmpDetails.Controls.Add(this.button2);
+            this.pnlEmpDetails.Controls.Add(this.pan);
+            this.pnlEmpDetails.Controls.Add(this.empid);
+            this.pnlEmpDetails.Controls.Add(this.name);
+            this.pnlEmpDetails.Controls.Add(this.label1);
+            this.pnlEmpDetails.Controls.Add(this.designation);
+            this.pnlEmpDetails.Controls.Add(this.department);
+            this.pnlEmpDetails.Controls.Add(this.label2);
+            this.pnlEmpDetails.Controls.Add(this.bankname);
+            this.pnlEmpDetails.Controls.Add(this.bankaccountno);
+            this.pnlEmpDetails.Controls.Add(this.label3);
+            this.pnlEmpDetails.Controls.Add(this.ppfno);
+            this.pnlEmpDetails.Controls.Add(this.ccsno);
+            this.pnlEmpDetails.Controls.Add(this.label4);
+            this.pnlEmpDetails.Controls.Add(this.payband);
+            this.pnlEmpDetails.Controls.Add(this.label6);
+            this.pnlEmpDetails.Controls.Add(this.label5);
+            this.pnlEmpDetails.Controls.Add(this.label7);
+            this.pnlEmpDetails.Controls.Add(this.label8);
+            this.pnlEmpDetails.Controls.Add(this.label10);
+            this.pnlEmpDetails.Controls.Add(this.label9);
+            this.pnlEmpDetails.Location = new System.Drawing.Point(77, 34);
+            this.pnlEmpDetails.Name = "pnlEmpDetails";
+            this.pnlEmpDetails.Size = new System.Drawing.Size(571, 118);
+            this.pnlEmpDetails.TabIndex = 0;
             // 
-            // panel2
+            // pnlPayAndAllowances
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label52);
-            this.panel2.Controls.Add(this.pay);
-            this.panel2.Controls.Add(this.agp);
-            this.panel2.Controls.Add(this.DA);
-            this.panel2.Controls.Add(this.grosspay);
-            this.panel2.Controls.Add(this.HRA);
-            this.panel2.Controls.Add(this.TRA);
-            this.panel2.Controls.Add(this.DAonTRA);
-            this.panel2.Controls.Add(this.FP);
-            this.panel2.Controls.Add(this.SP);
-            this.panel2.Controls.Add(this.WA);
-            this.panel2.Controls.Add(this.payandallowancesOthers);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Location = new System.Drawing.Point(77, 158);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(255, 306);
-            this.panel2.TabIndex = 1;
+            this.pnlPayAndAllowances.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlPayAndAllowances.Controls.Add(this.label52);
+            this.pnlPayAndAllowances.Controls.Add(this.pay);
+            this.pnlPayAndAllowances.Controls.Add(this.agp);
+            this.pnlPayAndAllowances.Controls.Add(this.DA);
+            this.pnlPayAndAllowances.Controls.Add(this.grosspay);
+            this.pnlPayAndAllowances.Controls.Add(this.HRA);
+            this.pnlPayAndAllowances.Controls.Add(this.TRA);
+            this.pnlPayAndAllowances.Controls.Add(this.DAonTRA);
+            this.pnlPayAndAllowances.Controls.Add(this.FP);
+            this.pnlPayAndAllowances.Controls.Add(this.SP);
+            this.pnlPayAndAllowances.Controls.Add(this.WA);
+            this.pnlPayAndAllowances.Controls.Add(this.payandallowancesOthers);
+            this.pnlPayAndAllowances.Controls.Add(this.label11);
+            this.pnlPayAndAllowances.Controls.Add(this.label12);
+            this.pnlPayAndAllowances.Controls.Add(this.label13);
+            this.pnlPayAndAllowances.Controls.Add(this.label14);
+            this.pnlPayAndAllowances.Controls.Add(this.label15);
+            this.pnlPayAndAllowances.Controls.Add(this.label16);
+            this.pnlPayAndAllowances.Controls.Add(this.label17);
+            this.pnlPayAndAllowances.Controls.Add(this.label18);
+            this.pnlPayAndAllowances.Controls.Add(this.label19);
+            this.pnlPayAndAllowances.Controls.Add(this.label20);
+            this.pnlPayAndAllowances.Controls.Add(this.label21);
+            this.pnlPayAndAllowances.Enabled = false;
+            this.pnlPayAndAllowances.Location = new System.Drawing.Point(77, 158);
+            this.pnlPayAndAllowances.Name = "pnlPayAndAllowances";
+            this.pnlPayAndAllowances.Size = new System.Drawing.Size(255, 306);
+            this.pnlPayAndAllowances.TabIndex = 1;
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(467, 522);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -1167,6 +1229,129 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // pnlFormulas
+            // 
+            this.pnlFormulas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFormulas.Controls.Add(this.lblDaOnTraPercent);
+            this.pnlFormulas.Controls.Add(this.lblHraPercent);
+            this.pnlFormulas.Controls.Add(this.lblDaPercent);
+            this.pnlFormulas.Controls.Add(this.btnFormulae);
+            this.pnlFormulas.Controls.Add(this.tbDaOnTraPercent);
+            this.pnlFormulas.Controls.Add(this.tbHraPercent);
+            this.pnlFormulas.Controls.Add(this.tbDaPercent);
+            this.pnlFormulas.Controls.Add(this.label57);
+            this.pnlFormulas.Controls.Add(this.label56);
+            this.pnlFormulas.Controls.Add(this.label55);
+            this.pnlFormulas.Controls.Add(this.label54);
+            this.pnlFormulas.Location = new System.Drawing.Point(668, 34);
+            this.pnlFormulas.Name = "pnlFormulas";
+            this.pnlFormulas.Size = new System.Drawing.Size(266, 118);
+            this.pnlFormulas.TabIndex = 105;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(14, 4);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(107, 20);
+            this.label54.TabIndex = 52;
+            this.label54.Text = "FORMULAS\t";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(15, 33);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(22, 13);
+            this.label55.TabIndex = 53;
+            this.label55.Text = "DA";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(15, 55);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(30, 13);
+            this.label56.TabIndex = 54;
+            this.label56.Text = "HRA";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(16, 77);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(66, 13);
+            this.label57.TabIndex = 55;
+            this.label57.Text = "DA ON TRA";
+            // 
+            // tbDaPercent
+            // 
+            this.tbDaPercent.Location = new System.Drawing.Point(86, 30);
+            this.tbDaPercent.Name = "tbDaPercent";
+            this.tbDaPercent.ReadOnly = true;
+            this.tbDaPercent.Size = new System.Drawing.Size(48, 20);
+            this.tbDaPercent.TabIndex = 56;
+            this.tbDaPercent.Text = "132";
+            this.tbDaPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
+            // 
+            // tbHraPercent
+            // 
+            this.tbHraPercent.Location = new System.Drawing.Point(86, 50);
+            this.tbHraPercent.Name = "tbHraPercent";
+            this.tbHraPercent.ReadOnly = true;
+            this.tbHraPercent.Size = new System.Drawing.Size(48, 20);
+            this.tbHraPercent.TabIndex = 57;
+            this.tbHraPercent.Text = "30";
+            this.tbHraPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
+            // 
+            // tbDaOnTraPercent
+            // 
+            this.tbDaOnTraPercent.Location = new System.Drawing.Point(86, 70);
+            this.tbDaOnTraPercent.Name = "tbDaOnTraPercent";
+            this.tbDaOnTraPercent.ReadOnly = true;
+            this.tbDaOnTraPercent.Size = new System.Drawing.Size(48, 20);
+            this.tbDaOnTraPercent.TabIndex = 58;
+            this.tbDaOnTraPercent.Text = "132";
+            this.tbDaOnTraPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pay_KeyPress);
+            // 
+            // btnFormulae
+            // 
+            this.btnFormulae.Location = new System.Drawing.Point(66, 93);
+            this.btnFormulae.Name = "btnFormulae";
+            this.btnFormulae.Size = new System.Drawing.Size(130, 23);
+            this.btnFormulae.TabIndex = 59;
+            this.btnFormulae.Text = "CHANGE FORMULAE";
+            this.btnFormulae.UseVisualStyleBackColor = true;
+            this.btnFormulae.Click += new System.EventHandler(this.btnFormulae_Click);
+            // 
+            // lblDaPercent
+            // 
+            this.lblDaPercent.AutoSize = true;
+            this.lblDaPercent.Location = new System.Drawing.Point(140, 32);
+            this.lblDaPercent.Name = "lblDaPercent";
+            this.lblDaPercent.Size = new System.Drawing.Size(115, 13);
+            this.lblDaPercent.TabIndex = 60;
+            this.lblDaPercent.Text = "132% of PAY and AGP";
+            // 
+            // lblHraPercent
+            // 
+            this.lblHraPercent.AutoSize = true;
+            this.lblHraPercent.Location = new System.Drawing.Point(140, 53);
+            this.lblHraPercent.Name = "lblHraPercent";
+            this.lblHraPercent.Size = new System.Drawing.Size(109, 13);
+            this.lblHraPercent.TabIndex = 61;
+            this.lblHraPercent.Text = "30% of PAY and AGP";
+            // 
+            // lblDaOnTraPercent
+            // 
+            this.lblDaOnTraPercent.AutoSize = true;
+            this.lblDaOnTraPercent.Location = new System.Drawing.Point(140, 72);
+            this.lblDaOnTraPercent.Name = "lblDaOnTraPercent";
+            this.lblDaOnTraPercent.Size = new System.Drawing.Size(70, 13);
+            this.lblDaOnTraPercent.TabIndex = 62;
+            this.lblDaOnTraPercent.Text = "132% of TRA";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1178,14 +1363,16 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlNetPay.ResumeLayout(false);
+            this.pnlNetPay.PerformLayout();
+            this.pnlDeductions.ResumeLayout(false);
+            this.pnlDeductions.PerformLayout();
+            this.pnlEmpDetails.ResumeLayout(false);
+            this.pnlEmpDetails.PerformLayout();
+            this.pnlPayAndAllowances.ResumeLayout(false);
+            this.pnlPayAndAllowances.PerformLayout();
+            this.pnlFormulas.ResumeLayout(false);
+            this.pnlFormulas.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1296,12 +1483,24 @@
         private System.Windows.Forms.TextBox netpay;
         private System.Windows.Forms.TextBox grosspay;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlNetPay;
+        private System.Windows.Forms.Panel pnlDeductions;
+        private System.Windows.Forms.Panel pnlEmpDetails;
+        private System.Windows.Forms.Panel pnlPayAndAllowances;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel pnlFormulas;
+        private System.Windows.Forms.Label lblDaOnTraPercent;
+        private System.Windows.Forms.Label lblHraPercent;
+        private System.Windows.Forms.Label lblDaPercent;
+        private System.Windows.Forms.Button btnFormulae;
+        private System.Windows.Forms.TextBox tbDaOnTraPercent;
+        private System.Windows.Forms.TextBox tbHraPercent;
+        private System.Windows.Forms.TextBox tbDaPercent;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label54;
     }
 }
 
