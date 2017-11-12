@@ -14,7 +14,12 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        Decimal daPercent = 132, hraPercent = 30, daOnTraPercent = 132; 
+        Decimal daPercent = 132, hraPercent = 30, daOnTraPercent = 132;
+        const string employeeTypeNR = "NR";
+        const string employeeTypeR = "R";
+        const string employeeTypeNA = "NA";
+        string employeeType = "";
+        Decimal grossPaySum = 0, totalDeductionSum = 0, netPaySum = 0;
         public Form1()
         {
             InitializeComponent();
@@ -101,7 +106,16 @@ namespace WindowsFormsApplication1
 
         private Decimal convertToDecimal(TextBox tb)
         {
-            return Convert.ToDecimal(tb.Text);
+            Decimal decValue = 0;
+            try
+            {
+                decValue = Convert.ToDecimal(tb.Text);
+            }
+            catch(Exception e)
+            {
+
+            }
+            return decValue;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,6 +126,8 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            resetTextBoxes();
+            resetEmployeeDetailsTextBoxes();
             if(!empid.Text.Equals(""))
             {
                 string connectionStr = "Server = (localdb)\\MSSQLLocalDB; Initial Catalog = Sample; Integrated Security = true";
@@ -146,6 +162,10 @@ namespace WindowsFormsApplication1
                     ccsno.Text = dr["ccsno"].ToString();
                     payband.Text = dr["payband"].ToString();
 
+                    if (dr["employeetype"] != null)
+                    {
+                        setTextBoxStatusFromEmpType(dr["employeetype"].ToString());
+                    }
                     con.Close();
 
                     pnlPayAndAllowances.Enabled = true;
@@ -155,51 +175,149 @@ namespace WindowsFormsApplication1
             }
         }
 
-        /*private void setSalaryValues(DataRow dr)
+        private void resetTextBoxes()
         {
-            Double _pay=0, _agp=0, _da=0, _hra=0, _tra=0, _daOnTra=0, _fp=0, _sp=0, _wa=0, _others=0;
-            if(dr == null)
+            pay.Enabled = false;
+            agp.Enabled = false;
+            DA.Enabled = false;
+            HRA.Enabled = false;
+            TRA.Enabled = false;
+            DAonTRA.Enabled = false;
+            FP.Enabled = false;
+            SP.Enabled = false;
+            WA.Enabled = false;
+            payandallowancesOthers.Enabled = false;
+
+            GPF_CPF.Enabled = false;
+            NPS.Enabled = false;
+            NPSArrears.Enabled = false;
+            PFLOAN.Enabled = false;
+            GIS.Enabled = false;
+            It.Enabled = false;
+            EBF.Enabled = false;
+            PT.Enabled = false;
+            LIC.Enabled = false;
+            CCS.Enabled = false;
+            HBA.Enabled = false;
+            HDFC.Enabled = false;
+            MedicalAdv.Enabled = false;
+            OR1C62.Enabled = false;
+            MiscRecpt.Enabled = false;
+            EOLHPLC_68_78.Enabled = false;
+            FestivalAdv.Enabled = false;
+            HouseRent.Enabled = false;
+            WaterCharges.Enabled = false;
+            ElecCharges.Enabled = false;
+            Buscharges.Enabled = false;
+            MCA.Enabled = false;
+            CompAdv.Enabled = false;
+            TutionFee.Enabled = false;
+            LTCAdv.Enabled = false;
+            TeleCharges.Enabled = false;
+            deductionsOthers.Enabled = false;
+
+            pay.Text = "";
+            agp.Text = "";
+            DA.Text = "";
+            HRA.Text = "";
+            TRA.Text = "";
+            DAonTRA.Text = "";
+            FP.Text = "";
+            SP.Text = "";
+            WA.Text = "";
+            payandallowancesOthers.Text = "";
+
+            GPF_CPF.Text = "";
+            NPS.Text = "";
+            NPSArrears.Text = "";
+            PFLOAN.Text = "";
+            GIS.Text = "";
+            It.Text = "";
+            EBF.Text = "";
+            PT.Text = "";
+            LIC.Text = "";
+            CCS.Text = "";
+            HBA.Text = "";
+            HDFC.Text = "";
+            MedicalAdv.Text = "";
+            OR1C62.Text = "";
+            MiscRecpt.Text = "";
+            EOLHPLC_68_78.Text = "";
+            FestivalAdv.Text = "";
+            HouseRent.Text = "";
+            WaterCharges.Text = "";
+            ElecCharges.Text = "";
+            Buscharges.Text = "";
+            MCA.Text = "";
+            CompAdv.Text = "";
+            TutionFee.Text = "";
+            LTCAdv.Text = "";
+            TeleCharges.Text = "";
+            deductionsOthers.Text = "";
+
+
+        }
+
+        private void resetEmployeeDetailsTextBoxes()
+        {
+            name.Text = "";
+            designation.Text = "";
+            department.Text = "";
+            pan.Text = "";
+            bankname.Text = "";
+            bankaccountno.Text = "";
+            ppfno.Text = "";
+            ccsno.Text = "";
+            payband.Text = "";
+        }
+
+        private void setTextBoxStatusFromEmpType(string dr)
+        {
+            if (dr == null)
                 return;
-            if(dr["employeetype"].Equals("NR") || dr["employeetype"].Equals("R"))
+            setEmployeeType(dr);
+            if(employeeType.Equals(employeeTypeNR))
             {
-                _pay = 67000;
-                _agp = 10000;
-                _da = (1.32) * (_pay + _agp);
-                _hra = (0.3) * (_pay + _agp);
-                _tra = 3200;
-                _daOnTra = (1.32) * (_tra);
+                pay.Enabled = true;
+                agp.Enabled = true;
+                TRA.Enabled = true;
+                SP.Enabled = true;
+                GPF_CPF.Enabled = true;
+                PFLOAN.Enabled = true;
+                GIS.Enabled = true;
+                It.Enabled = true;
+                PT.Enabled = true;
+                CCS.Enabled = true;
+                MedicalAdv.Enabled = true;
             }
-            if(dr["employeetype"].Equals("R"))
+            if(employeeType.Equals(employeeTypeR))
             {
-                _hra = 0;
-                _sp = 4000;
+                pay.Enabled = true;
+                agp.Enabled = true;
+                HRA.Text = "0";
+                
+                TRA.Enabled = true;
+                SP.Enabled = true;
+                GPF_CPF.Enabled = true;
+                GIS.Enabled = true;
+                It.Enabled = true;
+                EBF.Enabled = true;
+                PT.Enabled = true;
+                CCS.Enabled = true;
+                HouseRent.Enabled = true;
+                WaterCharges.Enabled = true;
+                ElecCharges.Enabled = true;
             }
-            if(dr["employeetype"].Equals("NA"))
+            if(employeeType.Equals(employeeTypeNA))
             {
-                _pay = 37690;
-                _agp = 0;
-                _da = 0;
-                _hra = 0;
-                _tra = 0;
-                _daOnTra = 0;
-                _fp = 0;
-                _sp = 25000;
-            }
-            if(dr["empid"].Equals(454))
-            {
-                _sp = 15000;
-            }
-            pay.Text = _pay.ToString();
-            agp.Text = _agp.ToString();
-            DA.Text = _da.ToString();
-            HRA.Text = _hra.ToString();
-            TRA.Text = _tra.ToString();
-            DAonTRA.Text = _daOnTra.ToString();
-            SP.Text = _sp.ToString();
-            FP.Text = _fp.ToString();
+                pay.Enabled = true;
+                SP.Enabled = true;
+                It.Enabled = true;
+                PT.Enabled = true;
+                CCS.Enabled = true;
 
-
-        }*/
+            }
+        }
 
         private void btnFormulae_Click(object sender, EventArgs e)
         {
@@ -254,17 +372,54 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void setDAandHRA()
+        {
+            if (!pay.Text.Equals("") && !agp.Text.Equals(""))
+            {
+                if (!employeeType.Equals(employeeTypeR))
+                {
+                    HRA.Text = ((hraPercent / 100) * (Convert.ToDecimal(pay.Text) + Convert.ToDecimal(agp.Text))).ToString();
+                }
+                DA.Text = ((daPercent / 100) * (Convert.ToDecimal(pay.Text) + Convert.ToDecimal(agp.Text))).ToString();
+            }
+            else
+            {
+                if (!employeeType.Equals(employeeTypeR))
+                {
+                    HRA.Text = "";
+                }
+                DA.Text = "";
+            }
+        }
+
+        private void setDAonTRA()
+        {
+            if (!TRA.Text.Equals(""))
+            {
+                DAonTRA.Text = ((daOnTraPercent / 100) * (Convert.ToDecimal(TRA.Text))).ToString();
+            }
+            else
+            {
+                DAonTRA.Text = "";
+            }
+        }
         private void agp_Leave(object sender, EventArgs e)
         {
             if(!pay.Text.Equals("") && !agp.Text.Equals(""))
             {
+                if(!employeeType.Equals(employeeTypeR))
+                {
+                    HRA.Text = ((hraPercent / 100) * (Convert.ToDecimal(pay.Text) + Convert.ToDecimal(agp.Text))).ToString();
+                }
                 DA.Text = ((daPercent / 100) * (Convert.ToDecimal(pay.Text) + Convert.ToDecimal(agp.Text))).ToString();
-                HRA.Text = ((hraPercent / 100) * (Convert.ToDecimal(pay.Text) + Convert.ToDecimal(agp.Text))).ToString();
             }
             else
             {
+                if (!employeeType.Equals(employeeTypeR))
+                {
+                    HRA.Text = "";
+                }
                 DA.Text = "";
-                HRA.Text = "";
             }
         }
 
@@ -272,11 +427,51 @@ namespace WindowsFormsApplication1
         {
             if(!TRA.Text.Equals(""))
             {
-                DAonTRA.Text = HRA.Text = ((daOnTraPercent / 100) * (Convert.ToDecimal(TRA.Text))).ToString();
+                DAonTRA.Text = ((daOnTraPercent / 100) * (Convert.ToDecimal(TRA.Text))).ToString();
             }
             else
             {
                 DAonTRA.Text = "";
+            }
+        }
+
+        private void setEmployeeType(string empType)
+        {
+            employeeType = empType;
+        }
+
+        private void payandallowancesOthers_Leave(object sender, EventArgs e)
+        {
+            string nameOfTB = (sender as TextBox).Name;
+            if(nameOfTB.Equals("pay") || nameOfTB.Equals("agp"))
+            {
+                setDAandHRA();
+            }
+            if(nameOfTB.Equals("TRA"))
+            {
+                setDAonTRA();
+            }
+            grosspay.Text = calculateSumFromTextBox(new TextBox[] { pay, agp, DA, DA, TRA, DAonTRA, FP, SP, WA, payandallowancesOthers });
+            grossPaySum = Convert.ToDecimal(grosspay.Text);
+            netPaySum = grossPaySum - totalDeductionSum;
+            netpay.Text = netPaySum.ToString();
+        }
+
+        private void deductionsOthers_Leave(object sender, EventArgs e)
+        {
+            totaldeductions.Text = calculateSumFromTextBox(new TextBox[] { GPF_CPF, NPS, NPSArrears, PFLOAN, GIS, It, EBF, PT, LIC, CCS, HBA, HDFC, MedicalAdv, OR1C62, MiscRecpt, EOLHPLC_68_78, FestivalAdv, HouseRent, WaterCharges, ElecCharges, Buscharges, MCA, CompAdv, TutionFee, LTCAdv, TeleCharges, deductionsOthers });
+            totalDeductionSum = Convert.ToDecimal(totaldeductions.Text);
+            netPaySum = grossPaySum - totalDeductionSum;
+            netpay.Text = netPaySum.ToString();
+        }
+
+        private void btnChangeResidentialStatus_Click(object sender, EventArgs e)
+        {
+            resetTextBoxes();
+            string residentialStatus = tbResidentialStatus.Text.ToUpper().Trim();
+            if (residentialStatus.Equals(employeeTypeR) || residentialStatus.Equals(employeeTypeNR) || residentialStatus.Equals(employeeTypeNA))
+            {
+                setTextBoxStatusFromEmpType(residentialStatus);
             }
         }
 
