@@ -140,6 +140,7 @@ namespace WindowsFormsApplication1
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
+                    MessageBox.Show("Successfully Updated!");
                 }
             }
         }

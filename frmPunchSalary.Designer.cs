@@ -80,6 +80,7 @@
             this.txtCcs = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.txtNps = new System.Windows.Forms.TextBox();
             this.txtLic = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -141,7 +142,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtNps = new System.Windows.Forms.TextBox();
             this.gbSalary.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlNetPay.SuspendLayout();
@@ -706,6 +706,16 @@
             this.label40.Size = new System.Drawing.Size(79, 16);
             this.label40.TabIndex = 20;
             this.label40.Text = "HOUSE RENT";
+            // 
+            // txtNps
+            // 
+            this.txtNps.Enabled = false;
+            this.txtNps.Location = new System.Drawing.Point(146, 52);
+            this.txtNps.Name = "txtNps";
+            this.txtNps.Size = new System.Drawing.Size(100, 22);
+            this.txtNps.TabIndex = 13;
+            this.txtNps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtElecCharges_KeyPress);
+            this.txtNps.Leave += new System.EventHandler(this.txtOR1C62_Leave);
             // 
             // txtLic
             // 
@@ -1318,23 +1328,15 @@
             this.label9.TabIndex = 6;
             this.label9.Text = "CCS NO.";
             // 
-            // txtNps
-            // 
-            this.txtNps.Enabled = false;
-            this.txtNps.Location = new System.Drawing.Point(146, 52);
-            this.txtNps.Name = "txtNps";
-            this.txtNps.Size = new System.Drawing.Size(100, 22);
-            this.txtNps.TabIndex = 13;
-            this.txtNps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtElecCharges_KeyPress);
-            this.txtNps.Leave += new System.EventHandler(this.txtOR1C62_Leave);
-            // 
             // frmPunchSalary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 590);
             this.Controls.Add(this.gbSalary);
+            this.MaximizeBox = false;
             this.Name = "frmPunchSalary";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Punch Salary";
             this.Load += new System.EventHandler(this.frmPunchSalary_Load);
             this.gbSalary.ResumeLayout(false);

@@ -44,7 +44,7 @@
             this.btnPunchSalary.Location = new System.Drawing.Point(39, 95);
             this.btnPunchSalary.Name = "btnPunchSalary";
             this.btnPunchSalary.Size = new System.Drawing.Size(113, 23);
-            this.btnPunchSalary.TabIndex = 0;
+            this.btnPunchSalary.TabIndex = 2;
             this.btnPunchSalary.Text = "Punch Salary";
             this.btnPunchSalary.UseVisualStyleBackColor = true;
             this.btnPunchSalary.Click += new System.EventHandler(this.button1_Click);
@@ -55,7 +55,7 @@
             this.btnPrintSalarySlip.Location = new System.Drawing.Point(39, 128);
             this.btnPrintSalarySlip.Name = "btnPrintSalarySlip";
             this.btnPrintSalarySlip.Size = new System.Drawing.Size(113, 23);
-            this.btnPrintSalarySlip.TabIndex = 1;
+            this.btnPrintSalarySlip.TabIndex = 3;
             this.btnPrintSalarySlip.Text = "Print Salary Slip";
             this.btnPrintSalarySlip.UseVisualStyleBackColor = true;
             // 
@@ -65,7 +65,7 @@
             this.btnReport.Location = new System.Drawing.Point(39, 161);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(113, 23);
-            this.btnReport.TabIndex = 2;
+            this.btnReport.TabIndex = 4;
             this.btnReport.Text = "Report";
             this.btnReport.UseVisualStyleBackColor = true;
             // 
@@ -75,7 +75,7 @@
             this.btnPayFixation.Location = new System.Drawing.Point(39, 29);
             this.btnPayFixation.Name = "btnPayFixation";
             this.btnPayFixation.Size = new System.Drawing.Size(113, 23);
-            this.btnPayFixation.TabIndex = 3;
+            this.btnPayFixation.TabIndex = 0;
             this.btnPayFixation.Text = "Pay Fixation";
             this.btnPayFixation.UseVisualStyleBackColor = true;
             this.btnPayFixation.Click += new System.EventHandler(this.btnPayFixation_Click);
@@ -86,9 +86,10 @@
             this.btnFormulaFixation.Location = new System.Drawing.Point(39, 62);
             this.btnFormulaFixation.Name = "btnFormulaFixation";
             this.btnFormulaFixation.Size = new System.Drawing.Size(113, 23);
-            this.btnFormulaFixation.TabIndex = 4;
+            this.btnFormulaFixation.TabIndex = 1;
             this.btnFormulaFixation.Text = "Formula Fixation";
             this.btnFormulaFixation.UseVisualStyleBackColor = true;
+            this.btnFormulaFixation.Click += new System.EventHandler(this.btnFormulaFixation_Click);
             // 
             // panel1
             // 

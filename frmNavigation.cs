@@ -19,13 +19,20 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //(new Form1()).Show();
+            frmPunchSalary FrmPunchSalary = new frmPunchSalary();
+            FrmPunchSalary.Show();
         }
 
         private void btnPayFixation_Click(object sender, EventArgs e)
         {
             frmPayFixation FrmPayFixation = new frmPayFixation();
-           
+            FrmPayFixation.Show();
+        }
+
+        private void btnFormulaFixation_Click(object sender, EventArgs e)
+        {
+            frmFormulaFixation FrmFormulaFixation = new frmFormulaFixation();
+            FrmFormulaFixation.Show();
         }
     }
 }
