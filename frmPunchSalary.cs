@@ -446,7 +446,6 @@ namespace WindowsFormsApplication1
                     connection.Open();
                     cmd.ExecuteNonQuery();
                     connection.Close();
-                    connection.Close();
                 }
             }
         }
